@@ -1,0 +1,609 @@
+﻿<!DOCTYPE html>
+<html lang="ch">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><!--IE8专用标记，用来渲染-->
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="overview &amp; stats" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="@Url.Content("~/ACE/css/bootstrap.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/ACE/font-awesome/4.7.0/css/font-awesome.min.css")" />
+    <!-- page specific plugin styles -->
+    <link rel="stylesheet" href="@Url.Content("~/ACE/css/jquery-ui.min.css")" />
+    <!-- page specific plugin styles -->
+    <!-- text fonts -->
+    <link rel="stylesheet" href="@Url.Content("~/ACE/css/fonts.googleapis.com.css")" />
+    <!-- ace styles -->
+    <link rel="stylesheet" href="@Url.Content("~/ACE/css/ace.min.css")" class="ace-main-stylesheet" id="main-ace-style" />
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="@Url.Content("~/ACE/css/ace-part2.min.css")" class="ace-main-stylesheet" />
+    <![endif]-->
+    <link rel="stylesheet" href="@Url.Content("~/ACE/css/ace-skins.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/ACE/css/ace-rtl.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/ACE/css/dataTables.bootstrap.min.css")" class="ace-main-stylesheet" id="main-ace-style" />
+    <!--  <link rel="stylesheet" href="@Url.Content("~/ACE/css/buttons.dataTables.min.css")" />  -->
+    <link rel="stylesheet" href="@Url.Content("~/ACE/css/buttons.bootstrap.min.css")" />
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="@Url.Content("~/ACE/css/ace-ie.min.css")" />
+    <![endif]-->
+    <!-- inline styles related to this page -->
+    <!-- ace settings handler -->
+    <script src="@Url.Content("~/ACE/js/ace-extra.min.js")"></script>
+    <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+    <!--[if lte IE 8]>
+    <script src="@Url.Content("~/ACE/js/html5shiv.min.js")"></script>
+    <script src="@Url.Content("~/ACE/js/respond.min.js")"></script>
+    <![endif]-->
+    <!-- 基础 Scripts -->
+    <!--[if !IE]> -->
+    <script src="@Url.Content("~/ACE/js/jquery-2.1.4.min.js")"></script>
+    <!-- <![endif]-->
+    <!--[if IE]>
+    <script src="@Url.Content("~/ACE/js/jquery-1.12.4.js")"></script>
+    <![endif]-->
+    <!-- 自定义滚动条
+    <script src="@Url.Content("~/ACE/js/jquery.mCustomScrollbar.js")"></script> -->
+    <script src="@Url.Content("~/ACE/js/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/ACE/js/dataTables.bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/ACE/js/dataTables.buttons.min.js")"></script>
+    <script src="@Url.Content("~/ACE/js/buttons.bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/ACE/js/buttons.colVis.min.js")"></script>
+</head>
+<body class="no-skin">
+    <!--导航栏部分-->
+    <div id="navbar" class="navbar navbar-default ace-save-state">
+        <div class="navbar-container ace-save-state" id="navbar-container">
+            <!--缩小之后的按钮-->
+            <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+                <span class="sr-only">Toggle sidebar</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!--缩小之后的按钮END-->
+            <!--框架标题-->
+            <div class="navbar-header pull-left">
+                <a href="index.html" class="navbar-brand">
+                    <small>
+                        <i class="fa fa-leaf"></i>
+                        yyyu开发框架
+                    </small>
+                </a>
+                <!--搜索栏位-->
+                <div class="navbar-brand" id="nav-search" style="padding-bottom:0px;">
+                    <form class="form-search">
+                        <span class="input-icon">
+                            <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" style="width:200px" />
+                            <i class="ace-icon fa fa-search nav-search-icon"></i>
+                        </span>
+                    </form>
+                </div>
+                <!--搜索栏位 END-->
+            </div>
+            <!--框架标题END-->
+            <div class="navbar-buttons navbar-header pull-right" role="navigation">
+                <ul class="nav ace-nav">
+                    <!--4个导航栏提示框-->
+                    <li class="grey dropdown-modal">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <i class="ace-icon fa fa-tasks"></i>
+                            <span class="badge badge-grey">4</span>
+                        </a>
+                        <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+                            <li class="dropdown-header">
+                                <i class="ace-icon fa fa-check"></i>
+                               4项进度
+                            </li>
+                            <li class="dropdown-content">
+                                <ul class="dropdown-menu dropdown-navbar">
+                                    <li>
+                                        <a href="#">
+                                            <div class="clearfix">
+                                                <span class="pull-left">Software Update</span>
+                                                <span class="pull-right">65%</span>
+                                            </div>
+                                            <div class="progress progress-mini">
+                                                <div style="width:65%" class="progress-bar"></div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="clearfix">
+                                                <span class="pull-left">Hardware Upgrade</span>
+                                                <span class="pull-right">35%</span>
+                                            </div>
+                                            <div class="progress progress-mini">
+                                                <div style="width:35%" class="progress-bar progress-bar-danger"></div>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">
+                                            <div class="clearfix">
+                                                <span class="pull-left">Unit Testing</span>
+                                                <span class="pull-right">15%</span>
+                                            </div>
+
+                                            <div class="progress progress-mini">
+                                                <div style="width:15%" class="progress-bar progress-bar-warning"></div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="clearfix">
+                                                <span class="pull-left">Bug Fixes</span>
+                                                <span class="pull-right">90%</span>
+                                            </div>
+                                            <div class="progress progress-mini progress-striped active">
+                                                <div style="width:90%" class="progress-bar progress-bar-success"></div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-footer">
+                                <a href="#">
+                                    转到某个链接
+                                    <i class="ace-icon fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="purple dropdown-modal">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <i class="ace-icon fa fa-bell icon-animated-bell"></i>
+                            <span class="badge badge-important">8</span>
+                        </a>
+                        <ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
+                            <li class="dropdown-header">
+                                <i class="ace-icon fa fa-exclamation-triangle"></i>
+                                    8个代办事项
+                            </li>
+                            <li class="dropdown-content">
+                                <ul class="dropdown-menu dropdown-navbar navbar-pink">
+                                    <li>
+                                        <a href="#">
+                                            <div class="clearfix">
+                                                <span class="pull-left">
+                                                    <i class="btn btn-xs no-hover btn-pink fa fa-comment"></i>
+                                                    New Comments
+                                                </span>
+                                                <span class="pull-right badge badge-info">+12</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="btn btn-xs btn-primary fa fa-user"></i>
+                                            Bob just signed up as an editor ...
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="clearfix">
+                                                <span class="pull-left">
+                                                    <i class="btn btn-xs no-hover btn-success fa fa-shopping-cart"></i>
+                                                    New Orders
+                                                </span>
+                                                <span class="pull-right badge badge-success">+8</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="clearfix">
+                                                <span class="pull-left">
+                                                    <i class="btn btn-xs no-hover btn-info fa fa-twitter"></i>
+                                                    Followers
+                                                </span>
+                                                <span class="pull-right badge badge-info">+11</span>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-footer">
+                                <a href="#">
+                                    转到链接
+                                    <i class="ace-icon fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="green dropdown-modal">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                            <i class="ace-icon fa fa-envelope icon-animated-vertical"></i>
+                            <span class="badge badge-success">5</span>
+                        </a>
+                        <ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
+                            <li class="dropdown-header">
+                                <i class="ace-icon fa fa-envelope-o"></i>
+                                5 Messages
+                            </li>
+                            <li class="dropdown-content">
+                                <ul class="dropdown-menu dropdown-navbar">
+                                    <li>
+                                        <a href="#" class="clearfix">
+                                            <img src="@Url.Content("~/ACE/images/avatars/avatar.png")" class="msg-photo" alt="Alex's Avatar" />
+                                            <span class="msg-body">
+                                                <span class="msg-title">
+                                                    <span class="blue">Alex:</span>
+                                                    Ciao sociis natoque penatibus et auctor ...
+                                                </span>
+                                                <span class="msg-time">
+                                                    <i class="ace-icon fa fa-clock-o"></i>
+                                                    <span>a moment ago</span>
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="clearfix">
+                                            <img src="@Url.Content("~/ACE/images/avatars/avatar3.png")" class="msg-photo" alt="Susan's Avatar" />
+                                            <span class="msg-body">
+                                                <span class="msg-title">
+                                                    <span class="blue">Susan:</span>
+                                                    Vestibulum id ligula porta felis euismod ...
+                                                </span>
+                                                <span class="msg-time">
+                                                    <i class="ace-icon fa fa-clock-o"></i>
+                                                    <span>20 minutes ago</span>
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="clearfix">
+                                            <img src="@Url.Content("~/ACE/images/avatars/avatar4.png")" class="msg-photo" alt="Bob's Avatar" />
+                                            <span class="msg-body">
+                                                <span class="msg-title">
+                                                    <span class="blue">Bob:</span>
+                                                    Nullam quis risus eget urna mollis ornare ...
+                                                </span>
+                                                <span class="msg-time">
+                                                    <i class="ace-icon fa fa-clock-o"></i>
+                                                    <span>3:15 pm</span>
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="clearfix">
+                                            <img src="@Url.Content("~/ACE/images/avatars/avatar2.png")" class="msg-photo" alt="Kate's Avatar" />
+                                            <span class="msg-body">
+                                                <span class="msg-title">
+                                                    <span class="blue">Kate:</span>
+                                                    Ciao sociis natoque eget urna mollis ornare ...
+                                                </span>
+                                                <span class="msg-time">
+                                                    <i class="ace-icon fa fa-clock-o"></i>
+                                                    <span>1:33 pm</span>
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="clearfix">
+                                            <img src="@Url.Content("~/ACE/images/avatars/avatar5.png")" class="msg-photo" alt="Fred's Avatar" />
+                                            <span class="msg-body">
+                                                <span class="msg-title">
+                                                    <span class="blue">Fred:</span>
+                                                    Vestibulum id penatibus et auctor  ...
+                                                </span>
+                                                <span class="msg-time">
+                                                    <i class="ace-icon fa fa-clock-o"></i>
+                                                    <span>10:09 am</span>
+                                                </span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-footer">
+                                <a href="inbox.html">
+                                    See all messages
+                                    <i class="ace-icon fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--4个导航栏提示框END-->
+                    <li class="light-blue dropdown-modal">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                            <img class="nav-user-photo" src="@Url.Content("~/ACE/images/avatars/avatar4.png")" alt="Jason's Photo" />
+                            <span class="user-info">
+                                <small>Welcome,</small>
+                                Jason
+                            </span>
+                            <i class="ace-icon fa fa-caret-down"></i>
+                        </a>
+                        <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                            <li>
+                                <a href="#">
+                                    <i class="ace-icon fa fa-cog"></i>
+                                   设置
+                                </a>
+                            </li>
+                            <li>
+                                <a href="profile.html">
+                                    <i class="ace-icon fa fa-user"></i>
+                                   详细信息
+                                </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a href="#">
+                                    <i class="ace-icon fa fa-power-off"></i>
+                                   退出登录
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--导航栏部分 END-->
+    <!--主体内容栏-->
+    <div class="main-container ace-save-state" id="main-container">
+        <!--左侧菜单栏-->
+        <div id="sidebar" class="sidebar responsive ace-save-state">
+            <script type="text/javascript">
+                try { ace.settings.loadState('sidebar') } catch (e) { }
+            </script>
+            <!--上方菜单栏的按钮-->
+            <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+                <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+                    <button class="btn btn-success">
+                        <i class="ace-icon fa fa-signal"></i>
+                    </button>
+                    <button class="btn btn-info">
+                        <i class="ace-icon fa fa-pencil"></i>
+                    </button>
+                    <button class="btn btn-warning">
+                        <i class="ace-icon fa fa-users"></i>
+                    </button>
+                    <button class="btn btn-danger">
+                        <i class="ace-icon fa fa-cogs"></i>
+                    </button>
+                </div>
+                <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+                    <span class="btn btn-success"></span>
+                    <span class="btn btn-info"></span>
+                    <span class="btn btn-warning"></span>
+                    <span class="btn btn-danger"></span>
+                </div>
+            </div>
+            <!--上方菜单栏的按钮END-->
+            <!-- 左侧菜单栏 -->
+            <ul id="nav" class="nav nav-list">
+                <!--1级菜单栏-->
+                <li class="active">
+                    <a href="javascript:void(0);" class="dropdown-toggle" rel="1">
+                        <i class="menu-icon fa fa-list"></i>
+                        <span class="menu-text"> 系统设置 </span>
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+                    <b class="arrow"></b>
+                    <!--2级菜单栏-->
+                    <ul class="submenu">
+                        <li class="">
+                            <a target="navTab" external="true" rel="2">
+                                <i class=""></i>
+                                <span class="menu-text">创建表格 </span>
+                                <b class="arrow"></b>   
+                            </a>
+                        </li>
+                        <li class="">
+                            <a target="navTab" external="true" rel="2">
+                                <i class=""></i>
+                                <span class="menu-text">测试标签1</span>
+                                <b class="arrow"></b>
+                            </a>
+                        </li>
+                    </ul>
+                    <!--2级菜单栏 END-->
+                </li>
+            </ul>
+            <!--1级菜单栏 END-->
+        </div>
+        <!--左侧菜单栏-->
+        <!--右侧主体内容-->
+        <div class="main-content">
+            <div class="main-content-inner">
+                <div class="page-content">
+                    <!--右侧设置栏位-->
+                    <div class="ace-settings-container" id="ace-settings-container">
+                        <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
+                            <i class="ace-icon fa fa-cog bigger-130"></i>
+                        </div>
+                        <div class="ace-settings-box clearfix" id="ace-settings-box">
+                            <div class="pull-left width-50">
+                                <div class="ace-settings-item">
+                                    <div class="pull-left">
+                                        <select id="skin-colorpicker" class="hide">
+                                            <option data-skin="no-skin" value="#438EB9">#438EB9</option>
+                                            <option data-skin="skin-1" value="#222A2D">#222A2D</option>
+                                            <option data-skin="skin-2" value="#C6487E">#C6487E</option>
+                                            <option data-skin="skin-3" value="#D0D0D0">#D0D0D0</option>
+                                        </select>
+                                    </div>
+                                    <span>&nbsp; Choose Skin</span>
+                                </div>
+
+                                <div class="ace-settings-item">
+                                    <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-navbar" autocomplete="off" />
+                                    <label class="lbl" for="ace-settings-navbar"> Fixed Navbar</label>
+                                </div>
+
+                                <div class="ace-settings-item">
+                                    <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-sidebar" autocomplete="off" />
+                                    <label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
+                                </div>
+
+                                <div class="ace-settings-item">
+                                    <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-breadcrumbs" autocomplete="off" />
+                                    <label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
+                                </div>
+
+                                <div class="ace-settings-item">
+                                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-rtl" autocomplete="off" />
+                                    <label class="lbl" for="ace-settings-rtl"> Right To Left (rtl)</label>
+                                </div>
+
+                                <div class="ace-settings-item">
+                                    <input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-add-container" autocomplete="off" />
+                                    <label class="lbl" for="ace-settings-add-container">
+                                        Inside
+                                        <b>.container</b>
+                                    </label>
+                                </div>
+                            </div><!-- /.pull-left -->
+
+                            <div class="pull-left width-50">
+                                <div class="ace-settings-item">
+                                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-hover" autocomplete="off" />
+                                    <label class="lbl" for="ace-settings-hover"> Submenu on Hover</label>
+                                </div>
+
+                                <div class="ace-settings-item">
+                                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-compact" autocomplete="off" />
+                                    <label class="lbl" for="ace-settings-compact"> Compact Sidebar</label>
+                                </div>
+
+                                <div class="ace-settings-item">
+                                    <input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-highlight" autocomplete="off" />
+                                    <label class="lbl" for="ace-settings-highlight"> Alt. Active Item</label>
+                                </div>
+                            </div><!-- /.pull-left -->
+                        </div><!-- /.ace-settings-box -->
+                    </div><!-- /.ace-settings-container -->
+                    <!--右侧设置栏位-->
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <!-- PAGE CONTENT BEGINS -->
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="tabbable">
+                                        <ul class="nav nav-tabs" id="myTab">
+                                            <li class="active">
+                                                <a data-toggle="tab" href="#home">
+                                                    <i class="green ace-icon fa fa-home bigger-120"></i>
+                                                    主页
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a data-toggle="tab" href="#messages">
+                                                    选项卡二
+                                                </a>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                                    Dropdown &nbsp;
+                                                    <i class="ace-icon fa fa-caret-down bigger-110 width-auto"></i>
+                                                </a>
+                                                <ul class="dropdown-menu dropdown-info">
+                                                    <li>
+                                                        <a data-toggle="tab" href="#dropdown1">fat</a>
+                                                    </li>
+                                                    <li>
+                                                        <a data-toggle="tab" href="#dropdown2">mdo</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div id="home" class="tab-pane fade in active">
+                                                <p>Raw denim you probably haven't heard of them jean shorts Austin.</p>
+                                                @RenderBody();
+                                            </div>
+                                            <div id="messages" class="tab-pane fade">
+                                                <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.</p>
+                                            </div>
+                                            <div id="dropdown1" class="tab-pane fade">
+                                                <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade.</p>
+                                            </div>
+                                            <div id="dropdown2" class="tab-pane fade">
+                                                <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- /.col -->
+                            </div><!-- /.row -->
+                            <!-- PAGE CONTENT ENDS -->
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- /.page-content -->
+            </div>
+        </div>
+        <!--右侧主体内容END-->
+
+    </div>
+    <!--主体内容栏END-->
+    <script type="text/javascript">
+        if ('ontouchstart' in document.documentElement)
+        { document.write("<script src='@Url.Content("~/ACE/js/jquery.mobile.custom.min.js")'>" + "<" + "/script>"); }
+    </script>
+    <script src="@Url.Content("~/ACE/js/bootstrap.min.js")"></script>
+    <!-- page specific plugin scripts -->
+    <!--[if lte IE 8]>
+    <script src="@Url.Content("~/ACE/js/excanvas.min.js")"></script>
+    <![endif]-->
+    <script src="@Url.Content("~/ACE/js/jquery-ui.min.js")"></script>
+    <script src="@Url.Content("~/ACE/js/jquery-ui.custom.min.js")"></script>
+    <script src="@Url.Content("~/ACE/js/jquery.ui.touch-punch.min.js")"></script>
+    <script src="@Url.Content("~/ACE/js/jquery.easypiechart.min.js")"></script>
+    <script src="@Url.Content("~/ACE/js/jquery.sparkline.index.min.js")"></script>
+    <script src="@Url.Content("~/ACE/js/jquery.flot.min.js")"></script>
+    <script src="@Url.Content("~/ACE/js/jquery.flot.pie.min.js")"></script>
+    <script src="@Url.Content("~/ACE/js/jquery.flot.resize.min.js")"></script>
+    <!-- ace scripts -->
+    <script src="@Url.Content("~/ACE/js/ace-elements.min.js")"></script>
+    <script src="@Url.Content("~/ACE/js/ace.min.js")"></script>
+    <!-- bootbox -->
+    <script src="@Url.Content("~/ACE/js/bootbox.min.js")"></script>
+   <script type="text/javascript">
+       $(function () {
+           var tabs = $("#tabs3").tabs();
+           var tabTemplate = "<li><a href='#{href}'>#{label}</a> <span class='fa fa-times-circle'></span></li>";
+           $('.menu li').click(function () {
+               //获取tabs下a[href]的值
+               var id = "#tabs-" + this.id;
+               //tabs初始化时就有一个li,所以要减1，添加时index会返回-1，再减1变为-2，可根据实际情况而定。这里实际上是通过Id定位#id所在li的位置，然后设置active
+               var index = $("#tabs3").find(id).index() - 1;
+               $("#tabs3").tabs('option', 'active', index);
+               if (index == -2) {
+                   addTab(this.innerText, this.id);
+               }
+
+           });
+           function addTab(tabTitle, id) {
+               var label = tabTitle,
+                   id = "tabs-" + id,
+                   li = $(tabTemplate.replace(/#\{href\}/g, "#" + id).replace(/#\{label\}/g, label));
+               var tabContentHtml = $("." + id).html();
+               var existing = tabs.find("[id='" + id + "']");
+               if (existing.length == 0) {
+                   tabs.find(".ui-tabs-nav").append(li);
+                   tabs.append("<div id='" + id + "'><p>" + tabContentHtml + "</p></div>");
+                   tabs.tabs("refresh");
+               }
+               var index = tabs.find('.ui-tabs-nav li').index(existing);
+               //添加时总是返回-1
+               tabs.tabs('option', 'active', index);
+           }
+           // close icon: removing the tab on click
+           $("#tabs3").on("click", 'span.fa-times-circle', function () {
+               var panelId = $(this).closest("li").remove().attr("aria-controls");
+               $("#" + panelId).remove();
+               tabs.tabs("refresh");
+           });
+
+       })
+   </script>
+</body>
+</html>

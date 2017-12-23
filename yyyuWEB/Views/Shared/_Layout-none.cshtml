@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <meta name="description" content="overview &amp; stats" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <!-- bootstrap & fontawesome -->
+    <link rel="stylesheet" href="@Url.Content("~/ACE/css/bootstrap.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/ACE/font-awesome/4.7.0/css/font-awesome.min.css")" />
+    <!-- page specific plugin styles -->
+    <link rel="stylesheet" href="@Url.Content("~/ACE/css/jquery-ui.min.css")" />
+    <!-- page specific plugin styles -->
+    <!-- text fonts -->
+    <link href="~/yyyu/css/jquery.scrollbar.min.css" rel="stylesheet" />
+    <link href="~/yyyu/css/nth.tabs.css" rel="stylesheet" />
+    <link href="~/yyyu/css/nth.tabs.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="@Url.Content("~/ACE/css/fonts.googleapis.com.css")" />
+    <!-- ace styles -->
+    <link rel="stylesheet" href="@Url.Content("~/ACE/css/ace.min.css")" class="ace-main-stylesheet" id="main-ace-style" />
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="@Url.Content("~/ACE/css/ace-part2.min.css")" class="ace-main-stylesheet" />
+    <![endif]-->
+    <link rel="stylesheet" href="@Url.Content("~/ACE/css/ace-skins.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/ACE/css/ace-rtl.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/ACE/css/dataTables.bootstrap.min.css")" class="ace-main-stylesheet" id="main-ace-style" />
+    <!--  <link rel="stylesheet" href="@Url.Content("~/ACE/css/buttons.dataTables.min.css")" />  -->
+    <link rel="stylesheet" href="@Url.Content("~/ACE/css/buttons.bootstrap.min.css")" />
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="@Url.Content("~/ACE/css/ace-ie.min.css")" />
+    <![endif]-->
+    <!-- inline styles related to this page -->
+    <!-- ace settings handler -->
+    <script src="@Url.Content("~/ACE/js/ace-extra.min.js")"></script>
+    <!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+    <!--[if lte IE 8]>
+    <script src="@Url.Content("~/ACE/js/html5shiv.min.js")"></script>
+    <script src="@Url.Content("~/ACE/js/respond.min.js")"></script>
+    <![endif]-->
+    <!-- 基础 Scripts -->
+    <!--[if !IE]> -->
+    <script src="@Url.Content("~/ACE/js/jquery-2.1.4.min.js")"></script>
+    <!-- <![endif]-->
+    <!--[if IE]>
+    <script src="@Url.Content("~/ACE/js/jquery-1.12.4.js")"></script>
+    <![endif]-->
+    <!-- 自定义滚动条
+    <script src="@Url.Content("~/ACE/js/jquery.mCustomScrollbar.js")"></script> -->
+    <script src="@Url.Content("~/ACE/js/jquery.dataTables.min.js")"></script>
+    <script src="@Url.Content("~/ACE/js/dataTables.bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/ACE/js/dataTables.buttons.min.js")"></script>
+    <script src="@Url.Content("~/ACE/js/buttons.bootstrap.min.js")"></script>
+    <script src="@Url.Content("~/ACE/js/buttons.colVis.min.js")"></script>
+    <script src="~/yyyu/js/jquery.scrollbar.min.js"></script>
+    <script src="~/yyyu/js/nth.tabs.min.js"></script>
+    <script src="~/yyyu/js/nth.tabs.js"></script>
+</head>
+<body>
+    @RenderBody()
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script src="@Url.Content("~/ACE/js/bootstrap.min.js")"></script>
+    <!-- page specific plugin scripts -->
+    <!--[if lte IE 8]>
+    <script src="@Url.Content("~/ACE/js/excanvas.min.js")"></script>
+    <![endif]-->
+    <script src="@Url.Content("~/ACE/js/jquery-ui.min.js")"></script>
+    <script src="@Url.Content("~/ACE/js/jquery-ui.custom.min.js")"></script>
+    <script src="@Url.Content("~/ACE/js/jquery.ui.touch-punch.min.js")"></script>
+    <script src="@Url.Content("~/ACE/js/jquery.easypiechart.min.js")"></script>
+    <script src="@Url.Content("~/ACE/js/jquery.sparkline.index.min.js")"></script>
+    <script src="@Url.Content("~/ACE/js/jquery.flot.min.js")"></script>
+    <script src="@Url.Content("~/ACE/js/jquery.flot.pie.min.js")"></script>
+    <script src="@Url.Content("~/ACE/js/jquery.flot.resize.min.js")"></script>
+    <!-- ace scripts -->
+    <script src="@Url.Content("~/ACE/js/ace-elements.min.js")"></script>
+    <script src="@Url.Content("~/ACE/js/ace.min.js")"></script>
+    <!-- bootbox -->
+    <script src="@Url.Content("~/ACE/js/bootbox.min.js")"></script>
+</body>
+</html>

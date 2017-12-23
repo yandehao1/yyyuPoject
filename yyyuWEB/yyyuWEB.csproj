@@ -1,0 +1,619 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{952C1629-8D82-4ECF-B8DC-4AB7F4AB97C2}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>yyyuWEB</RootNamespace>
+    <AssemblyName>yyyuWEB</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.1\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\css\ace-ie.min.css" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\css\ace-part2.min.css" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\css\ace-rtl.min.css" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\css\ace-skins.min.css" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\css\ace.min.css" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\css\bootstrap-colorpicker.min.css" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\css\bootstrap-datepicker3.min.css" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\css\bootstrap-duallistbox.min.css" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\css\bootstrap-editable.min.css" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\css\bootstrap-multiselect.min.css" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\css\bootstrap-timepicker.min.css" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\css\bootstrap.min.css" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\css\chosen.min.css" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\css\colorbox.min.css" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\css\daterangepicker.min.css" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\css\dropzone.min.css" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\css\font-awesome.min.css" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\css\fonts.googleapis.com.css" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\css\fullcalendar.min.css" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\css\jquery-ui.custom.min.css" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\css\jquery-ui.min.css" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\css\jquery.gritter.min.css" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\css\prettify.min.css" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\css\select2.min.css" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\css\ui.jqgrid.min.css" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\font-awesome\4.5.0\css\font-awesome.min.css" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\avatars\avatar.png" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\avatars\avatar1.png" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\avatars\avatar2.png" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\avatars\avatar3.png" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\avatars\avatar4.png" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\avatars\avatar5.png" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\avatars\profile-pic.jpg" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\avatars\user.jpg" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\bootstrap-colorpicker\alpha-horizontal.png" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\bootstrap-colorpicker\alpha.png" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\bootstrap-colorpicker\hue-horizontal.png" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\bootstrap-colorpicker\hue.png" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\bootstrap-colorpicker\saturation.png" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\email\email1.png" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\email\email2.png" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\email\email3.png" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\email\email4.png" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\gallery\image-1.jpg" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\gallery\image-2.jpg" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\gallery\image-3.jpg" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\gallery\image-4.jpg" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\gallery\image-5.jpg" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\gallery\image-6.jpg" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\gallery\thumb-1.jpg" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\gallery\thumb-2.jpg" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\gallery\thumb-3.jpg" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\gallery\thumb-4.jpg" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\gallery\thumb-5.jpg" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\gallery\thumb-6.jpg" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\placeholder\165x90.png" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\placeholder\255x150.png" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\placeholder\530x270.png" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\images\placeholder\550x280.png" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\ace-editable.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\ace-elements.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\ace-extra.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\ace.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\autosize.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\bootbox.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\bootstrap-colorpicker.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\bootstrap-datepicker.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\bootstrap-datetimepicker.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\bootstrap-editable.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\bootstrap-markdown.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\bootstrap-multiselect.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\bootstrap-tag.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\bootstrap-timepicker.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\bootstrap-wysiwyg.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\bootstrap.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\buttons.colVis.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\buttons.flash.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\buttons.html5.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\buttons.print.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\chosen.jquery.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\dataTables.buttons.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\dataTables.select.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\daterangepicker.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\dropzone.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\excanvas.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\fullcalendar.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\grid.locale-en.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\holder.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\html5shiv.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\jquery-1.11.3.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\jquery-2.1.4.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\jquery-additional-methods.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\jquery-typeahead.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\jquery-ui.custom.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\jquery-ui.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\jquery.bootstrap-duallistbox.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\jquery.colorbox.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\jquery.dataTables.bootstrap.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\jquery.dataTables.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\jquery.easypiechart.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\jquery.flot.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\jquery.flot.pie.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\jquery.flot.resize.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\jquery.gritter.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\jquery.hotkeys.index.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\jquery.inputlimiter.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\jquery.jqGrid.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\jquery.knob.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\jquery.maskedinput.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\jquery.mobile.custom.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\jquery.nestable.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\jquery.raty.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\jquery.sparkline.index.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\jquery.ui.touch-punch.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\jquery.validate.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\markdown.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\moment.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\prettify.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\respond.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\select2.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\spin.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\spinbox.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\tree.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\js\wizard.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\swf\flashExport.swf" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\blank.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\buttons.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\calendar.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\content-slider.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\dropzone.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\elements.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\email-confirmation.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\email-contrast.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\email-navbar.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\email-newsletter.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\email.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\error-404.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\error-500.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\faq.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\form-elements-2.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\form-elements.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\form-wizard.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\gallery.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\grid.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\inbox.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\index.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\invoice.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\jqgrid.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\jquery-ui.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\login.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\mobile-menu-1.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\mobile-menu-2.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\mobile-menu-3.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\nestable-list.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\pricing.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\profile.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\search.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\tables.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\timeline.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\top-menu.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\treeview.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\two-menu-1.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\two-menu-2.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\typography.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\widgets.html" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\wysiwyg.html" />
+    <Content Include="App_Data\DB_yyyu.sql" />
+    <Content Include="App_Data\yyyu_tblSysMenu.sql" />
+    <Content Include="App_Data\yyyu_tbl_SYSParameter.sql" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="HtmlPage3.html" />
+    <Content Include="Scripts\assets\css\ace-ie.min.css" />
+    <Content Include="Scripts\assets\css\ace-part2.min.css" />
+    <Content Include="Scripts\assets\css\ace-rtl.min.css" />
+    <Content Include="Scripts\assets\css\ace-skins.min.css" />
+    <Content Include="Scripts\assets\css\ace.min.css" />
+    <Content Include="Scripts\assets\css\bootstrap-colorpicker.min.css" />
+    <Content Include="Scripts\assets\css\bootstrap-datepicker3.min.css" />
+    <Content Include="Scripts\assets\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="Scripts\assets\css\bootstrap-duallistbox.min.css" />
+    <Content Include="Scripts\assets\css\bootstrap-editable.min.css" />
+    <Content Include="Scripts\assets\css\bootstrap-multiselect.min.css" />
+    <Content Include="Scripts\assets\css\bootstrap-timepicker.min.css" />
+    <Content Include="Scripts\assets\css\bootstrap.min.css" />
+    <Content Include="Scripts\assets\css\chosen.min.css" />
+    <Content Include="Scripts\assets\css\colorbox.min.css" />
+    <Content Include="Scripts\assets\css\daterangepicker.min.css" />
+    <Content Include="Scripts\assets\css\dropzone.min.css" />
+    <Content Include="Scripts\assets\css\font-awesome.min.css" />
+    <Content Include="Scripts\assets\css\fonts.googleapis.com.css" />
+    <Content Include="Scripts\assets\css\fullcalendar.min.css" />
+    <Content Include="Scripts\assets\css\jquery-ui.custom.min.css" />
+    <Content Include="Scripts\assets\css\jquery-ui.min.css" />
+    <Content Include="Scripts\assets\css\jquery.gritter.min.css" />
+    <Content Include="Scripts\assets\css\prettify.min.css" />
+    <Content Include="Scripts\assets\css\select2.min.css" />
+    <Content Include="Scripts\assets\css\ui.jqgrid.min.css" />
+    <Content Include="Scripts\assets\font-awesome\4.5.0\css\font-awesome.min.css" />
+    <Content Include="Scripts\assets\images\avatars\avatar.png" />
+    <Content Include="Scripts\assets\images\avatars\avatar1.png" />
+    <Content Include="Scripts\assets\images\avatars\avatar2.png" />
+    <Content Include="Scripts\assets\images\avatars\avatar3.png" />
+    <Content Include="Scripts\assets\images\avatars\avatar4.png" />
+    <Content Include="Scripts\assets\images\avatars\avatar5.png" />
+    <Content Include="Scripts\assets\images\avatars\profile-pic.jpg" />
+    <Content Include="Scripts\assets\images\avatars\user.jpg" />
+    <Content Include="Scripts\assets\images\bootstrap-colorpicker\alpha-horizontal.png" />
+    <Content Include="Scripts\assets\images\bootstrap-colorpicker\alpha.png" />
+    <Content Include="Scripts\assets\images\bootstrap-colorpicker\hue-horizontal.png" />
+    <Content Include="Scripts\assets\images\bootstrap-colorpicker\hue.png" />
+    <Content Include="Scripts\assets\images\bootstrap-colorpicker\saturation.png" />
+    <Content Include="Scripts\assets\images\email\email1.png" />
+    <Content Include="Scripts\assets\images\email\email2.png" />
+    <Content Include="Scripts\assets\images\email\email3.png" />
+    <Content Include="Scripts\assets\images\email\email4.png" />
+    <Content Include="Scripts\assets\images\gallery\image-1.jpg" />
+    <Content Include="Scripts\assets\images\gallery\image-2.jpg" />
+    <Content Include="Scripts\assets\images\gallery\image-3.jpg" />
+    <Content Include="Scripts\assets\images\gallery\image-4.jpg" />
+    <Content Include="Scripts\assets\images\gallery\image-5.jpg" />
+    <Content Include="Scripts\assets\images\gallery\image-6.jpg" />
+    <Content Include="Scripts\assets\images\gallery\thumb-1.jpg" />
+    <Content Include="Scripts\assets\images\gallery\thumb-2.jpg" />
+    <Content Include="Scripts\assets\images\gallery\thumb-3.jpg" />
+    <Content Include="Scripts\assets\images\gallery\thumb-4.jpg" />
+    <Content Include="Scripts\assets\images\gallery\thumb-5.jpg" />
+    <Content Include="Scripts\assets\images\gallery\thumb-6.jpg" />
+    <Content Include="Scripts\assets\images\placeholder\165x90.png" />
+    <Content Include="Scripts\assets\images\placeholder\255x150.png" />
+    <Content Include="Scripts\assets\images\placeholder\530x270.png" />
+    <Content Include="Scripts\assets\images\placeholder\550x280.png" />
+    <Content Include="Scripts\assets\js\ace-editable.min.js" />
+    <Content Include="Scripts\assets\js\ace-elements.min.js" />
+    <Content Include="Scripts\assets\js\ace-extra.min.js" />
+    <Content Include="Scripts\assets\js\ace.min.js" />
+    <Content Include="Scripts\assets\js\autosize.min.js" />
+    <Content Include="Scripts\assets\js\bootbox.js" />
+    <Content Include="Scripts\assets\js\bootstrap-colorpicker.min.js" />
+    <Content Include="Scripts\assets\js\bootstrap-datepicker.min.js" />
+    <Content Include="Scripts\assets\js\bootstrap-datetimepicker.min.js" />
+    <Content Include="Scripts\assets\js\bootstrap-editable.min.js" />
+    <Content Include="Scripts\assets\js\bootstrap-markdown.min.js" />
+    <Content Include="Scripts\assets\js\bootstrap-multiselect.min.js" />
+    <Content Include="Scripts\assets\js\bootstrap-tag.min.js" />
+    <Content Include="Scripts\assets\js\bootstrap-timepicker.min.js" />
+    <Content Include="Scripts\assets\js\bootstrap-wysiwyg.min.js" />
+    <Content Include="Scripts\assets\js\bootstrap.min.js" />
+    <Content Include="Scripts\assets\js\buttons.colVis.min.js" />
+    <Content Include="Scripts\assets\js\buttons.flash.min.js" />
+    <Content Include="Scripts\assets\js\buttons.html5.min.js" />
+    <Content Include="Scripts\assets\js\buttons.print.min.js" />
+    <Content Include="Scripts\assets\js\chosen.jquery.min.js" />
+    <Content Include="Scripts\assets\js\dataTables.buttons.min.js" />
+    <Content Include="Scripts\assets\js\dataTables.select.min.js" />
+    <Content Include="Scripts\assets\js\daterangepicker.min.js" />
+    <Content Include="Scripts\assets\js\dropzone.min.js" />
+    <Content Include="Scripts\assets\js\excanvas.min.js" />
+    <Content Include="Scripts\assets\js\fullcalendar.min.js" />
+    <Content Include="Scripts\assets\js\grid.locale-en.js" />
+    <Content Include="Scripts\assets\js\holder.min.js" />
+    <Content Include="Scripts\assets\js\html5shiv.min.js" />
+    <Content Include="Scripts\assets\js\jquery-1.11.3.min.js" />
+    <Content Include="Scripts\assets\js\jquery-2.1.4.min.js" />
+    <Content Include="Scripts\assets\js\jquery-additional-methods.min.js" />
+    <Content Include="Scripts\assets\js\jquery-typeahead.js" />
+    <Content Include="Scripts\assets\js\jquery-ui.custom.min.js" />
+    <Content Include="Scripts\assets\js\jquery-ui.min.js" />
+    <Content Include="Scripts\assets\js\jquery.bootstrap-duallistbox.min.js" />
+    <Content Include="Scripts\assets\js\jquery.colorbox.min.js" />
+    <Content Include="Scripts\assets\js\jquery.dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\assets\js\jquery.dataTables.min.js" />
+    <Content Include="Scripts\assets\js\jquery.easypiechart.min.js" />
+    <Content Include="Scripts\assets\js\jquery.flot.min.js" />
+    <Content Include="Scripts\assets\js\jquery.flot.pie.min.js" />
+    <Content Include="Scripts\assets\js\jquery.flot.resize.min.js" />
+    <Content Include="Scripts\assets\js\jquery.gritter.min.js" />
+    <Content Include="Scripts\assets\js\jquery.hotkeys.index.min.js" />
+    <Content Include="Scripts\assets\js\jquery.inputlimiter.min.js" />
+    <Content Include="Scripts\assets\js\jquery.jqGrid.min.js" />
+    <Content Include="Scripts\assets\js\jquery.knob.min.js" />
+    <Content Include="Scripts\assets\js\jquery.maskedinput.min.js" />
+    <Content Include="Scripts\assets\js\jquery.mobile.custom.min.js" />
+    <Content Include="Scripts\assets\js\jquery.nestable.min.js" />
+    <Content Include="Scripts\assets\js\jquery.raty.min.js" />
+    <Content Include="Scripts\assets\js\jquery.sparkline.index.min.js" />
+    <Content Include="Scripts\assets\js\jquery.ui.touch-punch.min.js" />
+    <Content Include="Scripts\assets\js\jquery.validate.min.js" />
+    <Content Include="Scripts\assets\js\markdown.min.js" />
+    <Content Include="Scripts\assets\js\moment.min.js" />
+    <Content Include="Scripts\assets\js\prettify.min.js" />
+    <Content Include="Scripts\assets\js\respond.min.js" />
+    <Content Include="Scripts\assets\js\select2.min.js" />
+    <Content Include="Scripts\assets\js\spin.js" />
+    <Content Include="Scripts\assets\js\spinbox.min.js" />
+    <Content Include="Scripts\assets\js\tree.min.js" />
+    <Content Include="Scripts\assets\js\wizard.min.js" />
+    <Content Include="Scripts\assets\swf\flashExport.swf" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\.gitignore" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\font-awesome\4.5.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\font-awesome\4.5.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\font-awesome\4.5.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\font-awesome\4.5.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\font-awesome\4.5.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\assets\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\LICENSE.md" />
+    <Content Include="ACEADMIN\ace-master1.4\ace-master\README.md" />
+    <Content Include="ACEADMIN\ace-master1.4.zip" />
+    <Content Include="Scripts\assets\font-awesome\4.5.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Scripts\assets\font-awesome\4.5.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Scripts\assets\font-awesome\4.5.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Scripts\assets\font-awesome\4.5.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Scripts\assets\font-awesome\4.5.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Scripts\assets\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Scripts\assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Scripts\assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Scripts\assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Scripts\assets\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_LayoutAce.cshtml" />
+    <Content Include="Views\Main\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutAce - 复制.cshtml" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MySQLDAL\yyyu.MySQLDAL.csproj">
+      <Project>{9f8611fb-d4af-4548-b351-2d06ff395735}</Project>
+      <Name>yyyu.MySQLDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SQLServerDAL\yyyu.SQLServerDAL.csproj">
+      <Project>{2a5a2b89-feff-4c17-9059-380545787a1e}</Project>
+      <Name>yyyu.SQLServerDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\yyyu.BAL\yyyu.BAL.csproj">
+      <Project>{48d66d0c-b3dd-4aa8-b34a-2427438f3e25}</Project>
+      <Name>yyyu.BAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\yyyu.Common\yyyu.Common.csproj">
+      <Project>{ba047a28-9b43-4b97-b30e-745fb703e1cc}</Project>
+      <Name>yyyu.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\yyyu_Model\yyyu.Model.csproj">
+      <Project>{75d44aaf-97cd-4531-b097-77feded6fcfd}</Project>
+      <Name>yyyu.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>2114</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:2114/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
