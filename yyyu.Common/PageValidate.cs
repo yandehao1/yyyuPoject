@@ -3,6 +3,7 @@ using System.Text;
 using System.Web;
 using System.Web.UI.WebControls;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace yyyu.Common
 {
@@ -335,5 +336,23 @@ namespace yyyu.Common
             return result;
         }
         #endregion
+        public static string SafeLongFilter(string text, long defaultValue, char split = ',')
+        {
+            if (text.Trim().Length < 1)
+                return defaultValue.ToString(CultureInfo.InvariantCulture);
+            string[] tmpSplit = text.Split(new[] { split }, StringSplitOptions.RemoveEmptyEntries);
+            if (tmpSplit.Length < 1)
+                return defaultValue.ToString(CultureInfo.InvariantCulture);
+
+            long tmp;
+            for (int i = 0; i < tmpSplit.Length; i++)
+            {
+                if (long.TryParse(tmpSplit[i], out tmp))
+                    tmpSplit[i] = tmp.ToString(CultureInfo.InvariantCulture);
+                else
+                    tmpSplit[i] = defaultValue.ToString(CultureInfo.InvariantCulture);
+            }
+            return string.Join(split.ToString(CultureInfo.InvariantCulture), tmpSplit);
+        }
     }
 }

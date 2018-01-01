@@ -14,7 +14,7 @@ namespace yyyuWEB.Controllers
         {
             //获取菜单
             yyyu.BLL.yyyu_tblSysMenu sysmenu = new yyyu.BLL.yyyu_tblSysMenu();
-            DataSet ds = sysmenu.GetList("IsActive=1");
+            sysmenu.GetMuenList();
             return View();
         }
         public ActionResult Defult()

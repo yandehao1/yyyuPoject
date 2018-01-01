@@ -10,7 +10,6 @@ namespace yyyu.Common
 	/// </summary>
 	public sealed class Assistant
 	{		
-			
 		#region
 
 		/// <summary>
@@ -47,7 +46,5 @@ namespace yyyu.Common
 		}
 
 		#endregion
-		
-
 	}
 }

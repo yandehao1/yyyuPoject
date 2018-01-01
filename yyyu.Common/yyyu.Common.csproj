@@ -55,6 +55,10 @@
     <Reference Include="MySql.Data">
       <HintPath>..\packages\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\dotNET\project\YYMVC\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="OpenSmtp">
       <HintPath>..\packages\OpenSmtp.dll</HintPath>
     </Reference>
@@ -84,6 +88,7 @@
     <Compile Include="DEncrypt\RSACryption.cs" />
     <Compile Include="HttpProc.cs" />
     <Compile Include="INIFile.cs" />
+    <Compile Include="JsonHelper.cs" />
     <Compile Include="MailSender.cs" />
     <Compile Include="MessageBox.cs" />
     <Compile Include="PageBase.cs">
@@ -94,6 +99,7 @@
     <Compile Include="RMB.cs" />
     <Compile Include="StringPlus.cs" />
     <Compile Include="TimeParser.cs" />
+    <Compile Include="TreeList\TreeList.cs" />
     <Compile Include="UrlOper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
