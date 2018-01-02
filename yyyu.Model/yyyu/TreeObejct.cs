@@ -10,14 +10,38 @@ namespace yyyu.Model.yyyu
     /// </summary>
     public abstract class TreeObejct
     {
-        public string ID { set; get; }
-        public string PID { set; get; }
+        /// <summary>
+        /// 菜单Menu_Id
+        /// </summary>
+        public string Menu_Id { set; get; }
+        /// <summary>
+        /// Menu_ParentId
+        /// </summary>
+        public string Menu_ParentId { set; get; }
+        /// <summary>
+        /// 字段名称
+        /// </summary>
         public string Name { set; get; }
-        public string Url { set; get; }
+        /// <summary>
+        /// 系统管理
+        /// </summary>
+        public string ShowName { set; get; }
+        /// <summary>
+        /// 排序号
+        /// </summary>
         public string MeunNum { set; get; }
-
+        /// <summary>
+        /// 访问路径
+        /// </summary>
+        public string NodeUrl { set; get; }
+        /// <summary>
+        /// 是否包含子节点
+        /// </summary>
+        public string IshasSon { set; get; }
+        /// <summary>
+        /// 子节点数据
+        /// </summary>
         public IList<TreeObejct> children = new List<TreeObejct>();
-
         //需方法，为子节点添加数据
         public virtual void Addchildren(TreeObejct node)
         {
