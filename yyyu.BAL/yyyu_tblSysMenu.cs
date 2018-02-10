@@ -171,67 +171,128 @@ namespace yyyu.BLL
         #endregion  BasicMethod
         #region  ExtensionMethod
         /// <summary>
-        /// 获取菜单，转换为JSON
+        /// 获取所有菜单
         /// </summary>
         /// <returns></returns>
         public string GetMuenList()
         {
             //获取数据
             DataSet ds = this.GetList("IsActive=1");
-            //将数据存放到List<Dictionary<string, string>>
-            List<Dictionary<string, string>> listdic = new List<Dictionary<string, string>>();
-            Dictionary<string, Model.yyyu.TreeObejct> dicTreeObejct = new Dictionary<string, Model.yyyu.TreeObejct>();
-            List<Model.yyyu.TreeObejct> list = new List<Model.yyyu.TreeObejct>();//数据存储在这里
-            Model.yyyu.TreeObejct mp = null;
-            //判断是否获取到菜单数据
+            Dictionary<string, Model.yyyu.TreeObejct> dicTreeObejct = new Dictionary<string, Model.yyyu.TreeObejct>();//数据存储
+            string strJson = "";
+            //菜单数据大于0
             if (ds.Tables[0].Rows.Count > 0)
             {
-                //添加父节点
+                //先获取添加父节点信息
                 DataView dv = ds.Tables[0].DefaultView;//获取视图
                 dv.RowFilter = "Menu_ParentId=-1 AND Menu_Level=1";
                 DataTable dt = dv.ToTable();
-                string json = yyyu.Common.JsonHelper.SerializationStr(dt);//将父节点转化为JSON；
-                listdic = yyyu.Common.JsonHelper.JsonStrToObject<List<Dictionary<string, string>>>(json);//将父节点添加到实体中
-                //判断父节点是否大于0
-                if (listdic.Count > 0)
+                foreach (DataRow item in dt.Rows)
                 {
-                    for (int i = 0; i < listdic.Count; i++)
+                    Model.yyyu.TreeObejct mp = new Model.yyyu.TreeObejct();
+                    //添加父节点
+                    if (item["Menu_ParentId"].ToString() == "-1")
                     {
-                        Dictionary<string, string> tmpdic = new Dictionary<string, string>();
-                        tmpdic = listdic[i];//获取节点数据
-                        mp.Menu_Id = tmpdic[""].ToString();
-                        mp.Menu_ParentId = tmpdic[""].ToString();
-                        mp.Name = tmpdic[""].ToString();
-                        mp.ShowName = tmpdic[""].ToString();
-                        mp.MeunNum = tmpdic[""].ToString();
-                        mp.IshasSon = tmpdic[""].ToString();
-                        mp.NodeUrl = tmpdic[""].ToString();
-
+                        mp.Menu_Id = item["Menu_Id"].ToString();
+                        mp.Menu_ParentId = item["Menu_ParentId"].ToString();
+                        mp.Name = item["Name"].ToString();
+                        mp.ShowName = item["ShowName"].ToString();
+                        mp.MeunNum = item["MeunNum"].ToString();
+                        if (item["NodeUrl"] == null)
+                        {
+                            mp.NodeUrl = "";
+                        }
+                        else
+                        {
+                            mp.NodeUrl = item["NodeUrl"].ToString();
+                        }
+                        mp.IshasSon = item["IshasSon"].ToString();
+                        mp.children =new List<Model.yyyu.TreeObejct>();
+                        dicTreeObejct.Add(mp.Menu_Id, mp);//将数据插入到list中
+                    }
+                }
+                //获取所有子节点的数据
+                DataView dv1 = ds.Tables[0].DefaultView;//获取子节点视图
+                dv1.RowFilter = "Menu_ParentId<>-1";
+                DataTable dt1 = dv1.ToTable();
+                if (dt1.Rows.Count>0)
+                {
+                    //根据父节点添加子节点
+                    foreach (var dicTree in dicTreeObejct)
+                    {
+                        foreach (DataRow dr  in dt1.Rows)
+                        {
+                            if (dicTree.Value.Menu_Id==dr["Menu_ParentId"].ToString())
+                            {
+                                Model.yyyu.TreeObejct mp = new Model.yyyu.TreeObejct();
+                                mp.Menu_Id = dr["Menu_Id"].ToString();
+                                mp.Menu_ParentId = dr["Menu_ParentId"].ToString();
+                                mp.Name = dr["Name"].ToString();
+                                mp.ShowName = dr["ShowName"].ToString();
+                                mp.MeunNum = dr["MeunNum"].ToString();
+                                if (dr["NodeUrl"] == null)
+                                {
+                                    mp.NodeUrl = "";
+                                }
+                                else
+                                {
+                                    mp.NodeUrl = dr["NodeUrl"].ToString();
+                                }
+                                mp.IshasSon = dr["IshasSon"].ToString();
+                                dicTreeObejct[dicTree.Value.Menu_Id].children.Add(mp);
+                            }
+                        }
 
                     }
                 }
+               strJson=yyyu.Common.JsonHelper.SerializationStr(dicTreeObejct);
             }
             else
             {
 
             }
-            return "";
+            return strJson;
         }
 
-        public Model.yyyu.TreeObejct GetSumlist()
+        /// <summary>
+        /// 获取父级菜单的节点
+        /// </summary>
+        /// <returns></returns>
+        public string GetMuenPidList() 
         {
-            Model.yyyu.TreeObejct mp = null;
-            return mp;
+            DataSet ds = this.GetList("IsActive=1 AND Menu_ParentId=-1 AND Menu_Level=1");//获取父节点数据
+            Dictionary<string, Model.yyyu.TreeObejct> dicTreeObejct = new Dictionary<string, Model.yyyu.TreeObejct>();//数据存储
+            string strJson = "";
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow item in ds.Tables[0].Rows)
+                {
+                    Model.yyyu.TreeObejct mp = new Model.yyyu.TreeObejct();
+                    //添加父节点
+                    if (item["Menu_ParentId"].ToString() == "-1")
+                    {
+                        mp.Menu_Id = item["Menu_Id"].ToString();
+                        mp.Menu_ParentId = item["Menu_ParentId"].ToString();
+                        mp.Name = item["Name"].ToString();
+                        mp.ShowName = item["ShowName"].ToString();
+                        mp.MeunNum = item["MeunNum"].ToString();
+                        if (item["NodeUrl"] == null)
+                        {
+                            mp.NodeUrl = "";
+                        }
+                        else
+                        {
+                            mp.NodeUrl = item["NodeUrl"].ToString();
+                        }
+                        mp.IshasSon = item["IshasSon"].ToString();
+                        mp.children = new List<Model.yyyu.TreeObejct>();
+                        dicTreeObejct.Add(mp.Menu_Id, mp);//将数据插入到list中
+                    }
+                }
+                strJson = yyyu.Common.JsonHelper.SerializationStr(dicTreeObejct);
+            }
+            return strJson;
         }
-
-        //        mp.Url = "";
-        //DataView dv2 = ds.Tables[0].DefaultView;//获取视图
-        //dv2.RowFilter = "Menu_ParentId=" + mp.PID;
-        //DataTable dt2 = dv2.ToTable();
-        //for (int j = 0; j < dt2.Rows.Count; j++)
-        //{
-
-        //}
         #endregion  ExtensionMethod
     }
 }

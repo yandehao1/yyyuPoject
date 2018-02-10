@@ -659,11 +659,13 @@
     <Content Include="ace-master\ace-master\README.md" />
     <Content Include="yyyu\css\jquery.scrollbar.min.css" />
     <Content Include="yyyu\css\nth.tabs.css" />
-    <Content Include="yyyu\css\nth.tabs.min - 复制.css" />
-    <Content Include="yyyu\css\nth.tabs.min.css" />
+    <Content Include="yyyu\css\nth.tabs.css1.0\nth.tabs.css" />
+    <Content Include="yyyu\css\nth.tabs.css1.0\nth.tabs.min - 复制.css" />
+    <Content Include="yyyu\css\nth.tabs.css1.0\nth.tabs.min.css" />
     <Content Include="yyyu\js\jquery.scrollbar.min.js" />
     <Content Include="yyyu\js\nth.tabs.js" />
-    <Content Include="yyyu\js\nth.tabs.min.js" />
+    <Content Include="yyyu\js\nth.tabs.js1.0\nth.tabs.js" />
+    <Content Include="yyyu\js\nth.tabs.js1.0\nth.tabs.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Content\JavaScript1.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />

@@ -12,10 +12,15 @@ namespace yyyuWEB.Controllers
         // GET: Main
         public ActionResult Index()
         {
+
+            return View();
+        }
+        public JsonResult MenuJson() 
+        {
             //获取菜单
             yyyu.BLL.yyyu_tblSysMenu sysmenu = new yyyu.BLL.yyyu_tblSysMenu();
-            sysmenu.GetMuenList();
-            return View();
+            string strJson=sysmenu.GetMuenPidList();
+            return Json(strJson,JsonRequestBehavior.AllowGet);
         }
         public ActionResult Defult()
         {

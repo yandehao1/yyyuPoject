@@ -99,7 +99,7 @@
     <Compile Include="RMB.cs" />
     <Compile Include="StringPlus.cs" />
     <Compile Include="TimeParser.cs" />
-    <Compile Include="TreeList\TreeList.cs" />
+    <Compile Include="TreeList\TreeObject.cs" />
     <Compile Include="UrlOper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

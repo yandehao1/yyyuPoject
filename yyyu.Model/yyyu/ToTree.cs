@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace yyyu.BAL
+namespace yyyu.Model.yyyu
 {
-    public class Class1
+    public class ToTree 
     {
+
     }
 }

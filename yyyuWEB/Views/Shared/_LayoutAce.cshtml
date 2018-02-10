@@ -13,9 +13,8 @@
     <link rel="stylesheet" href="@Url.Content("~/ACE/css/jquery-ui.min.css")" />
     <!-- page specific plugin styles -->
     <!-- text fonts -->
-    <link href="~/yyyu/css/jquery.scrollbar.min.css" rel="stylesheet" />
-    <link href="~/yyyu/css/nth.tabs.css" rel="stylesheet" />
-    <link href="~/yyyu/css/nth.tabs.min.css" rel="stylesheet" />
+    @*<link href="~/yyyu/css/nth.tabs.css" rel="stylesheet" />
+    <link href="~/yyyu/css/nth.tabs.min.css" rel="stylesheet" />*@
     <link rel="stylesheet" href="@Url.Content("~/ACE/css/fonts.googleapis.com.css")" />
     <!-- ace styles -->
     <link rel="stylesheet" href="@Url.Content("~/ACE/css/ace.min.css")" class="ace-main-stylesheet" id="main-ace-style" />
@@ -47,14 +46,16 @@
     <![endif]-->
     <!-- 自定义滚动条
     <script src="@Url.Content("~/ACE/js/jquery.mCustomScrollbar.js")"></script> -->
+    <script src="@Url.Content("~/ACE/js/bootstrap.min.js")"></script>
     <script src="@Url.Content("~/ACE/js/jquery.dataTables.min.js")"></script>
     <script src="@Url.Content("~/ACE/js/dataTables.bootstrap.min.js")"></script>
     <script src="@Url.Content("~/ACE/js/dataTables.buttons.min.js")"></script>
     <script src="@Url.Content("~/ACE/js/buttons.bootstrap.min.js")"></script>
     <script src="@Url.Content("~/ACE/js/buttons.colVis.min.js")"></script>
+    <link href="~/yyyu/css/jquery.scrollbar.min.css" rel="stylesheet" />
     <script src="~/yyyu/js/jquery.scrollbar.min.js"></script>
-    <script src="~/yyyu/js/nth.tabs.min.js"></script>
+    <link href="~/yyyu/css/nth.tabs.css" rel="stylesheet" />
     <script src="~/yyyu/js/nth.tabs.js"></script>
 </head>
-    @RenderBody();
+    @RenderBody()
 </html>

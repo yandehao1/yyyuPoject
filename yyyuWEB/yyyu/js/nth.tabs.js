@@ -1,4 +1,4 @@
-/**
+﻿/**
  * nth-tabs
  * author:nethuige
  * version:1.0
@@ -6,25 +6,55 @@
 (function ($) {
 	$.fn.nthTabs =  function(options){
 		//插件中的40为默认左边距
-		var nthTabs = this;
-		var defaults = {
-			allowClose:true, //添加选项卡时是否允许关闭,默认值：是
-			active:false, //添加选项卡时是否为活动状态,默认值：否
-			rollWidth:nthTabs.width()-120, //可滚动的区域宽度，120即3个操作按钮的宽度
-		};
+	    var nthTabs = this;
+        
+	    var $clone = nthTabs.clone();
+	    var defaults = {
+	        id: 'nthTabs' + Math.ceil(Math.random() * 10000000),
+	        title: 'nthTab',
+	        icon: '', //图标class
+	        allowClose: true, //添加选项卡时是否允许关闭,默认值：是
+	        active: false, //添加选项卡时是否为活动状态,默认值：否
+	        rollWidth: nthTabs.width() - 120, //可滚动的区域宽度，120即3个操作按钮的宽度
+	        external:false, //是否为外部内容（iframe）
+	        onload: '', //iframe的onload事件（仅时使用有效）
+	    };
 		var settings = $.extend({},defaults,options);
-		var template = '<div class="page-tabs"><a href="#" class="roll-nav roll-nav-left"><span class="fa fa-backward"></span></a><div class="content-tabs"><div class="content-tabs-container"><ul class="nav nav-tabs"></ul></div></div><a href="#" class="roll-nav roll-nav-right"><span class="fa fa-forward"></span></a><div class="dropdown roll-nav right-nav-list"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-chevron-down"></span></a><ul class="dropdown-menu"><li><a href="#" class="tab-location">定位当前选项卡</a></li><li><a href="#" class="tab-close-current">关闭当前选项卡</a></li><li role="separator" class="divider"></li><li><a href="#" class="tab-close-other">关闭其他选项卡</a></li><li><a href="#" class="tab-close-all">关闭全部选项卡</a></li><li role="separator" class="divider"></li><li class="scrollbar-outer tab-list-scrollbar"><div class="tab-list-container"><ul class="tab-list"></ul></div></li></ul></div></div><div class="tab-content" style="padding:20px"></div>';
+		var template = '<div class="page-tabs"><a href="#" class="roll-nav roll-nav-left"><span class="fa fa-backward"></span></a><div class="content-tabs"><div class="content-tabs-container"><ul class="nav nav-tabs"></ul></div></div><a href="#" class="roll-nav roll-nav-right"><span class="fa fa-forward"></span></a><div class="dropdown roll-nav right-nav-list"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="fa fa-chevron-down"></span></a><ul class="dropdown-menu"><li><a href="#" class="tab-location">定位当前选项卡</a></li><li><a href="#" class="tab-close-current">关闭当前选项卡</a></li><li role="separator" class="divider"></li><li><a href="#" class="tab-close-other">关闭其他选项卡</a></li><li><a href="#" class="tab-close-all">关闭全部选项卡</a></li><li role="separator" class="divider"></li><li class="scrollbar-outer tab-list-scrollbar"><div class="tab-list-container"><ul class="tab-list"></ul></div></li></ul></div></div><div class="tab-content" style="padding:10px"></div>';
 		//各种api
 		var methods = {
 			//初始化
-			init:function () {
+		    init: function () {
 				nthTabs.html(template);
 				methods.listen();
-			},
+		    },
+		    //创建默认页面
+		    tabInit: function ($clone) {
+		        var $tab = $('>div.tab-pane', $clone);
+		        //初始化原有的各个子页面
+		        $('>div.tab-pane', $clone).each(function (index, element) {
+
+		            var $this = $(this);
+		            var options = {};
+		            var content = $this.html();
+		            try {
+		                options = eval("(" + $this.attr('tab-datas') + ")") || {};
+		            } catch (e) {
+		                options = {};
+		            };
+
+		            //合并对象
+		            $.extend(options, { 'content': content });
+		            //新增页面
+		            methods.addTab(options);
+		        });
+
+		        return methods;
+		    },
 			//事件监听
 			listen:function(){
 				event.onTabClose().onTabRollLeft().onTabRollRight().onTabList()
-					.onTabCloseOpt().onTabCloseAll().onTabCloseOther().onLocationTab();
+					.onTabCloseOpt().onTabCloseAll().onTabCloseOther().onLocationTab().onTabTouchRoll();
 			},
 			//获取所有tab宽度
 			getAllTabWidth:function(){
@@ -53,21 +83,37 @@
 			//添加一个选项卡
 			addTab:function (options) {
 				//nav-tab
-				var tab = [];
-				var active = options.active==undefined ? settings.active : options.active;
+			    var tab = [];
+			    var external = options.external || false;
+			    var icon = options.icon || '';
+			    var id = options.id || settings.id;
+			    var title = options.title;
+			    var active = options.active == undefined ? settings.active : options.active;
 				var allowClose = options.allowClose==undefined ? settings.allowClose : options.allowClose;
 				active = active ? 'active':'';
-				tab.push('<li role="presentation" class="'+active+'">');
-				tab.push('<a href="#'+options.id+'" data-toggle="tab">');
-				tab.push('<span>'+options.title+'</span>');
+				tab.push('<li role="presentation" class="' + active + '" allowclose="' + allowClose + '">');
+				tab.push('<a href="#' + id + '" data-toggle="tab">');
+                //是否有图标
+				if (icon) {
+				    tab.push('<span><i class="fa ' + icon + '"></i>' + title + '</span>');
+				} else {
+				    tab.push('<span>' + title + '</span>');
+				}
 				allowClose ? tab.push('<i class="fa fa-close tab-close"></i>'):'';
 				tab.push('</a>');
 				tab.push('</li>');
 				nthTabs.find(".nav-tabs").append(tab.join(''));
 				//tab-content
 				var tabContent = [];
-				tabContent.push('<div class="tab-pane '+active+'" id="'+options.id+'">');
-				tabContent.push(options.content);
+				tabContent.push('<div class="tab-pane ' + active + '" id="' + id + '" allowclose="' + allowClose + '">');;
+
+			    //是否为外部
+				if (external) {
+				    tabContent.push('<iframe src="' + options.content + '" style="width:100%; style="width:100%;" frameborder="no" border="0" marginwidth="0" marginheight="0" onload="' + options.onload + '"" ></iframe>');
+				} else {
+				    tabContent.push(options.content);
+				}
+				
 				tabContent.push('</div>');
 				nthTabs.find(".tab-content").append(tabContent.join(''));
 				return methods;
@@ -90,7 +136,7 @@
 				}
 				//情况2：之前同级选项卡宽度之和大于选项卡可视区域的70%且小于等于选项卡可视区域的则margin为可视区域的一半,使其更显眼
 				else if(width<=settings.rollWidth){
-					margin_left_total = 40-settings.rollWidth/2;
+				    margin_left_total = 40 - settings.rollWidth / 2;
 				}
 				//情况3：算法：a:当前活动选项卡的所有前面的同级选项卡的宽度之和；b:当前活动选项卡的宽度；c:选项卡可视区域的宽度；
 					//即当前活动选项卡相对选项卡可视区域宽度的(余宽) = a+b-Math.floor(a/c)*c
@@ -98,10 +144,10 @@
 					var remaining = width+navTabA.parent().width()-(Math.floor(width/settings.rollWidth)*settings.rollWidth);
 					if(remaining<=settings.rollWidth*0.7){
 						//余宽小于选项卡可视区域宽度70%则边距为可视区域宽度的整数倍
-						margin_left_total = 40-Math.floor(width/settings.rollWidth)*settings.rollWidth;
+					    margin_left_total = 40 - Math.floor(width / settings.rollWidth) * settings.rollWidth;
 					}else{
 						//余宽大于选项卡可视区域宽度70%则边距为可视区域宽度的整数倍外加一半的边距，保证活动选项卡可视效果最佳
-						margin_left_total = 40-Math.floor(width/settings.rollWidth)*settings.rollWidth-settings.rollWidth/2;
+					    margin_left_total = 40 - Math.floor(width / settings.rollWidth) * settings.rollWidth - settings.rollWidth / 2;
 					}
 				}
 				contentTab.css("margin-left",margin_left_total);
@@ -130,16 +176,23 @@
 				return methods;
 			},
 			//删除其他选项卡
-			delOtherTab:function(){
-				nthTabs.find(".nav-tabs li").not('[class="active"]').remove();
-				nthTabs.find(".tab-content div").not('[class="tab-pane active"]').remove();
+			delOtherTab: function () {
+			    nthTabs.find('.nav-tabs li[allowclose="true"]').not('[class="active"]').remove();
+			    nthTabs.find('.tab-content div[allowclose="true"]').not('[class="tab-pane active"]').remove();
 				return methods;
 			},
 			//删除全部选项卡
-			delAllTab:function(){
-				nthTabs.find(".nav-tabs li").remove();
-				nthTabs.find(".tab-content div").remove();
-				return methods;
+			delAllTab: function () {
+			    nthTabs.find('.nav-tabs li[allowclose="true"]').remove();
+			    nthTabs.find('.tab-content div[allowclose="true"]').remove();
+
+			    try {
+			        var $unallowclose = nthTabs.find('.nav-tabs li[allowclose="false"]');
+			        var id = $('>a', $unallowclose).attr('href');
+			        this.setActTab(id).locationTab(id);
+			    } catch (e) { }
+
+			    return methods;
 			},
 			//切换活动选项卡
 			setActTab:function (tabId) {
@@ -191,26 +244,139 @@
 			},
 			//左滑选项卡
 			onTabRollLeft:function () {
-				nthTabs.on("click",'.roll-nav-left',function () {
-					if(methods.getAllTabWidth()<=settings.rollWidth)return false; //未超出可视区域宽度,不可滑动
-					var contentTab = $(this).parent().find('.content-tabs-container');
-					var margin_left_origin = contentTab.css('marginLeft').replace('px','');
-					var margin_left_total = parseFloat(margin_left_origin) + methods.getMarginStep()+40;
-					contentTab.css("margin-left",margin_left_total>40 ? 40 : margin_left_total);
-				});
+			    nthTabs.on("click", '.roll-nav-left', function () {
+			        if (methods.getAllTabWidth() <= settings.rollWidth) return false; //未超出可视区域宽度,不可滑动
+			        var contentTab = $(this).parent().find('.content-tabs-container');
+			        var margin_left_origin = contentTab.css('marginLeft').replace('px', '');
+			        var margin_left_total = parseFloat(margin_left_origin) + methods.getMarginStep() + 40;
+			        contentTab.stop(true, false).animate({ "margin-left": margin_left_total > 30 ? 30 : margin_left_total }, 100);
+			    });
 				return event;
 			},
 			//右滑选项卡
 			onTabRollRight:function () {
-				nthTabs.on("click",'.roll-nav-right',function () {
+			    nthTabs.on("click", '.roll-nav-right', function () {
 					if(methods.getAllTabWidth()<=settings.rollWidth)return false; //未超出可视区域宽度,不可滑动
 					var contentTab = $(this).parent().find('.content-tabs-container');
 					var margin_left_origin = contentTab.css('marginLeft').replace('px','');
 					var margin_left_total = parseFloat(margin_left_origin) - methods.getMarginStep();
 					if(methods.getAllTabWidth()-Math.abs(margin_left_origin)<=settings.rollWidth)return false; //已无隐藏无需滚动
-					contentTab.css("margin-left",margin_left_total);
+				    //contentTab.css("margin-left",margin_left_total);
+					contentTab.stop(true, false).animate({ "margin-left": margin_left_total }, 100);
 				});
 				return event;
+			},
+            //选项卡拖动
+			onTabTouchRoll: function () {
+			    nthTabs.on("mousedown touchstart", 'li[role="presentation"]', function (e) {
+
+                    //清除历史绑定记录。
+			        $(document).unbind({
+			            'mousemove': move,
+			            'touchmove': mobileMove,
+			            'mouseup': stop,
+			            'touchend': stop
+			        });
+
+			        var $this = $(this);
+			        var deltaX = 0;
+			        var opageX = 0;
+			        var contentTab = $this.closest('div.content-tabs-container');
+			        var oLeft = parseFloat(contentTab.css('marginLeft').replace('px', ''), '0');
+			        oLeft = isNaN(oLeft) ? 0 : oLeft;
+			        contentTab.addClass('no-transition');
+                    
+			        //事件类型
+			        switch (e.type) {
+			            case 'mousedown': start(e); break;
+			            case 'touchstart': mobileStart(e); break;
+			            default: return;
+			        };
+
+			        //开始绑定鼠标移动和松开的事件
+			        function start(e) {
+			            opageX = e.pageX;
+			            deltaX = opageX - oLeft;
+			            $(document).bind({
+			                'mousemove': move,
+			                'mouseup': stop
+			            });
+			            return false;
+			        }
+			        //移动位置
+			        function move(e) {
+			            var npageX = e.pageX;
+			            var nLeft = npageX - deltaX;
+
+			            //判断是否产生了拖动。
+			            if (npageX != opageX) {
+			                $this.bind('click', function () { return false });
+
+			                if (npageX > opageX) {
+			                    nLeft = nLeft > 30 ? 30 : nLeft;
+			                } else {
+			                    var margin_left_origin = contentTab.css('marginLeft').replace('px', '');
+			                    if (methods.getAllTabWidth() - Math.abs(margin_left_origin) <= nthTabs.width() - 120) {
+			                        return false;
+			                    }
+			                }
+
+			                contentTab.css({
+			                    "margin-left": nLeft + 'px'
+			                });
+			            }
+			            return false;
+			        }
+
+			        //开始绑定鼠标移动和松开的事件
+			        function mobileStart(e) {
+			            var touch = e.originalEvent.targetTouches[0];
+			            opageX = touch.pageX;
+			            deltaX = opageX - oLeft;
+
+			            $(document).bind({
+			                'touchmove': mobileMove,
+			                'touchend': stop
+			            });
+			        }
+			        //移动位置
+			        function mobileMove(e) {
+			            var touch = e.originalEvent.targetTouches[0];
+			            var npageX = touch.pageX;
+			            var nLeft = npageX - deltaX;
+
+			            //判断是否产生了拖动。
+			            if (npageX != opageX) {
+			                if (npageX > opageX) {
+			                    nLeft = nLeft > 30 ? 30 : nLeft;
+			                } else {
+			                    var margin_left_origin = contentTab.css('marginLeft').replace('px', '');
+			                    if (methods.getAllTabWidth() - Math.abs(margin_left_origin) <= nthTabs.width() - 120) {
+			                        return false;
+			                    }
+
+			                }
+			                contentTab.css({
+			                    "margin-left": nLeft + 'px'
+			                });
+			            }
+
+			            return false;
+			        }
+			        //解绑事件
+			        function stop() {
+			            contentTab.removeClass('no-transition');
+			            $(document).unbind({
+			                'mousemove': move,
+			                'touchmove': mobileMove,
+			                'mouseup': stop,
+			                'touchend': stop
+			            });
+			            setTimeout(function () {
+			                $this.unbind('click');
+			            }, 100);			            
+			        }
+			    });
 			},
 			//选项卡清单
 			onTabList:function(){
@@ -236,6 +402,7 @@
 			}
 		};
 		methods.init();
+		methods.tabInit($clone);
 		return methods;
 	}
 })(jQuery);

@@ -8,7 +8,7 @@ namespace yyyu.Model.yyyu
     /// <summary>
     /// 抽象类,生成树状结构
     /// </summary>
-    public abstract class TreeObejct
+    public  class TreeObejct
     {
         /// <summary>
         /// 菜单Menu_Id
@@ -41,11 +41,6 @@ namespace yyyu.Model.yyyu
         /// <summary>
         /// 子节点数据
         /// </summary>
-        public IList<TreeObejct> children = new List<TreeObejct>();
-        //需方法，为子节点添加数据
-        public virtual void Addchildren(TreeObejct node)
-        {
-            this.children.Add(node);
-        }
+        public List<TreeObejct> children = new List<TreeObejct>();
     }
 }
