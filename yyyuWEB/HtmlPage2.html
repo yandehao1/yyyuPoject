@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+</head>
+<body>
+    <!--1级菜单栏-->
+    <li class="active">
+        <a href="javascript:void(0)" class="dropdown-toggle" rel="1">
+            <i class="menu-icon fa fa-list"></i>
+            <span class="menu-text"> 系统设置 </span>
+            <b class="arrow fa fa-angle-down"></b>
+        </a>
+        <b class="arrow"></b>
+        <!--2级菜单栏-->
+        <ul class="submenu">
+            <li class="">
+                <a href="#" rtarget="navTab" external="true" rel="2">
+                    <i class=""></i>
+                    <span class="menu-text">创建表格 </span>
+                    <b class="arrow"></b>
+                </a>
+            </li>
+            <li class="">
+                <a href="JavaScript:TabClick()" target="navTab" external="true" rel="2">
+                    <i class=""></i>
+                    <span class="menu-text">测试标签1</span>
+                    <b class="arrow"></b>
+                </a>
+            </li>
+        </ul>
+        <!--2级菜单栏 END-->
+        //获取子节点方式,传递父节点ID
+        function GetSonMeun(pid, IshasSon)
+        {
+
+        var $ele = $('#nav').find("li").find(".open").find(".submenu");//获取当前控件中点击的li
+        var html = '';
+        html += '
+    <li class="">
+        ';
+        html += '<a href="#" rtarget="navTab" external="true" rel="2">
+            ';
+            html += '<i class=""></i>';
+            html += '<span class="menu-text">22222</span>';
+            html += '<b class="arrow"></b>';
+            html += '
+        </a>';
+        html += '
+    </li>';
+    $ele.append(html);
+    return;
+    //获取子节点数据
+    $.ajax({
+    url: '/Main/SumMenuJson',
+    type: 'Get',
+    data: { pid: pid },
+    dataType: "json",
+    success: function (data)
+    {
+    var html = '';
+    $ele.html(html);
+    var JsonArr = $.parseJSON(data);
+    for (var json in JsonArr) {
+    html += '<li class="">
+        ';
+        html += '<a href="#" rtarget="navTab" external="true" rel="2">
+            ';
+            html += '<i class=""></i>';
+            html += '<span class="menu-text">' + JsonArr[i].ShowName + '</span>';
+            html += '<b class="arrow"></b>';
+            html += '
+        </a>';
+        html += '
+    </li>';
+    }
+    $ele.html(html);
+    //获取到数据后加载
+    }
+    });
+    }
+    //function TabClick() {
+    //    $.ajax({
+    //        url: '/Main/Defult',
+    //        type: 'Get',
+    //        dataType: 'html',
+    //        success: function (data) {
+    //            nthTabs.addTab({
+    //                id: 'ceshi1',
+    //                title: '傻逼'
+    //            }).setActTab('#ceshi1').locationTab()
+    //            $("#ceshi1").html(data)
+    //        }
+    //    });
+    //}
+    //
+    //$(document).ready(function ()
+    //{
+    //    $("#nav li").find(".open").click(function () {
+    //        alert(22222);
+    //    });
+    //});
+    //$.ajax({
+    //    url: url,
+    //    type: 'Get',
+    //    dataType: 'html',
+    //    success: function (data)
+    //    {
+    //        nthTabs.addTab({
+    //            id: 'Defult',
+    //            title: '主页',
+    //            active: true,
+    //            allowClose: false,
+    //        }).setActTab('#Defult').locationTab();
+    //        $("#Defult").html(data);
+    //    }
+    //});
+    </li>
+</body>
+</html>

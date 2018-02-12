@@ -293,6 +293,42 @@ namespace yyyu.BLL
             }
             return strJson;
         }
+        /// <summary>
+        /// 获取子节点ID
+        /// </summary>
+        /// <returns></returns>
+        public string GetMenuSonList(string pid) 
+        {
+            
+            DataSet ds = this.GetList("Menu_ParentId=" + pid + " AND IsActive=1");//获取激活状态的菜单栏
+            Dictionary<string, Model.yyyu.TreeObejct> dicTreeObejct = new Dictionary<string, Model.yyyu.TreeObejct>();//数据存储
+            string strJson = "";
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow item in ds.Tables[0].Rows)
+                {
+                    Model.yyyu.TreeObejct mp = new Model.yyyu.TreeObejct();
+                    mp.Menu_Id = item["Menu_Id"].ToString();
+                    mp.Menu_ParentId = item["Menu_ParentId"].ToString();
+                    mp.Name = item["Name"].ToString();
+                    mp.ShowName = item["ShowName"].ToString();
+                    mp.MeunNum = item["MeunNum"].ToString();
+                    if (item["NodeUrl"] == null)
+                    {
+                    mp.NodeUrl = "";
+                    }
+                    else
+                    {
+                    mp.NodeUrl = item["NodeUrl"].ToString();
+                    }
+                    mp.IshasSon = item["IshasSon"].ToString();
+                    mp.children = new List<Model.yyyu.TreeObejct>();
+                    dicTreeObejct.Add(mp.Menu_Id, mp);//将数据插入到list中
+                }
+                strJson = yyyu.Common.JsonHelper.SerializationStr(dicTreeObejct);
+            }
+            return strJson;
+        }
         #endregion  ExtensionMethod
     }
 }

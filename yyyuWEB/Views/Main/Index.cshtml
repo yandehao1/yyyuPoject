@@ -337,33 +337,14 @@
             <!--上方菜单栏的按钮END-->
             <!-- 左侧菜单栏 -->
             <ul id="nav" class="nav nav-list">
-                <!--1级菜单栏-->
                 <li class="active">
-                    <a href="javascript:void(0)" class="dropdown-toggle" rel="1">
-                        <i class="menu-icon fa fa-list"></i>
-                        <span class="menu-text"> 系统设置 </span>
-                        <b class="arrow fa fa-angle-down"></b>
+                    <a href="index.html">
+                        <i class="menu-icon fa fa-tachometer"></i>
+                        <span class="menu-text"> Dashboard </span>
                     </a>
                     <b class="arrow"></b>
-                    <!--2级菜单栏-->
-                    <ul class="submenu">
-                        <li class="">
-                            <a href="#" rtarget="navTab" external="true" rel="2">
-                                <i class=""></i>
-                                <span class="menu-text">创建表格 </span>
-                                <b class="arrow"></b>
-                            </a>
-                        </li>
-                        <li class="">
-                            <a href="JavaScript:TabClick()" target="navTab" external="true" rel="2">
-                                <i class=""></i>
-                                <span class="menu-text">测试标签1</span>
-                                <b class="arrow"></b>
-                            </a>
-                        </li>
-                    </ul>
-                    <!--2级菜单栏 END-->
                 </li>
+
             </ul>
             <!--1级菜单栏 END-->
         </div>
@@ -394,7 +375,6 @@
         </div>
     </div>
     <!--右侧主体内容END-->
-    </div>
     <!--主体内容栏END-->
     <script type="text/javascript">
         if ('ontouchstart' in document.documentElement)
@@ -419,61 +399,48 @@
     <script src="@Url.Content("~/ACE/js/bootbox.min.js")"></script>
     <script type="text/javascript">
         nthTabs = $("#editor-tabs").nthTabs();
-        //默认加载菜单
+        //默认加载主页
         $(function () {
-            $.ajax({
-                url: '/Main/MenuJson',
-                success: function (data) {
-                    var result = $.parseJSON(data);
-                    var $nav = $("#nav");
-                    var html = '';
-                    $nav.html(html);
-                    //添加父节点菜单
-                    for (var i in result)
-                    {
-                        html += '<li class="">';
-                        html += '<a href="javascript:void(0)" class="dropdown-toggle">';//这里要改一下 写方法
-                        html += ' <i class="menu-icon fa fa-list"></i>';//图标在这里
-                        html += '<span class="menu-text"> ' + result[i].ShowName + ' </span>';//菜单栏名称
-                        html += ' <b class="arrow fa fa-angle-down"></b>';
-                        html += '</a>';
-                        html += '<b class="arrow"></b>';
-                        html += '<ul class="submenu">';
-                        html += '</ul>';
-                        html += '</li>';
-                    }
-                    $nav.html(html);
-                }
-            });
-        });
-        //$(document).ready(function () {
-
-        //    //function ajaxload(local) {
-        //    //    htmlobj = $.ajax({ url: local, async: false })
-        //    //    $("#test").html(htmlobj.responseText)
-        //    //}
-        //    $(function () {
-        //        nthTabs.addTab({
-        //            id: 'index',
-        //            title: '主页',
-        //            active: true,
-        //            allowClose: false,
-        //        })
-        //    })
-        //});
-        function TabClick() {
             $.ajax({
                 url: '/Main/Defult',
                 type: 'Get',
                 dataType: 'html',
                 success: function (data) {
                     nthTabs.addTab({
-                        id: 'ceshi1',
-                        title: '傻逼'
-                    }).setActTab('#ceshi1').locationTab()
-                    $("#ceshi1").html(data)
+                        id: 'Defult',
+                        title: '主页',
+                        active: true,
+                        allowClose: false,
+                    }).setActTab('#Defult').locationTab();
+                    $("#Defult").html(data)
                 }
-            })
+            });
+        });
+        //默认加载菜单
+        $(function ()
+        {
+            //获取父菜单栏
+            $.ajax({
+                url: '/Main/GetMenu',
+                success: function (data)
+                {
+                    var $nav = $("#nav");
+                    var html = data;
+                    $nav.html(html);
+                }
+            });
+        });
+        //获取子节点方式,传递父节点ID
+        function GetSonMeun(pid, IshasSon,name)
+        {
+            var $ele = $('#nav').find("#"+name);
+            var html = '';
+            html += '<ul class="submenu">';
+            html += '<li class="">';
+            html += '<span class="menu-text">22222</span>';
+            html += '</li>';
+            html += '</ul>';
+            $ele.append(html);
         }
     </script>
 </body>
